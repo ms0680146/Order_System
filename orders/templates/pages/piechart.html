@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block title %}圓餅圖{% endblock %}
+
+{% block content %}
+    <h1>訂單免運比例圓餅圖 </h1>
+    <canvas id="pieChart"></canvas>
+    <script>
+        var endpoint = '/api/shipping/data/'
+        var datasets = []
+        var labels = []
+        $.ajax({
+            method: "GET",
+            url: endpoint,
+            success: function(data){
+                labels = data.labels
+                data = data.counts
+                var ctx = document.getElementById('pieChart');
+                var myChart = new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Orders',
+                            data: data,
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                            ],
+                            borderColor: [
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                            ],
+                            borderWidth: 1
+                        }]
+                    }
+                })
+            },
+            error: function(error_data){
+                console.log('error')
+                console.log(error_data)
+            }
+        })
+    </script>
+{% endblock %}

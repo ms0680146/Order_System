@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block title %}前三名商品{% endblock %}
+
+{% block content %}
+    <h1>最受歡迎前三名</h1>
+    <canvas id="barChart"></canvas>
+    <script>
+        var endpoint = '/api/top3/products/'
+        var datasets = []
+        var labels = []
+        $.ajax({
+            method: "GET",
+            url: endpoint,
+            success: function(data){
+                labels = data.labels
+                data = data.counts
+                var ctx = document.getElementById('barChart');
+                var myChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Order Items',
+                            data: data,
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                            ],
+                            borderColor: [
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                            ],
+                            borderWidth: 1
+                        }]
+                    }
+                })
+            },
+            error: function(error_data){
+                console.log('error')
+                console.log(error_data)
+            }
+        })
+    </script>
+{% endblock %}
