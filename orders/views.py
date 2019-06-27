@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
-from orders.models import Order, OrderItem
+from orders.models import Order, OrderItem, Cohort
 from django.db.models import Count, Sum
 # Create your views here.
 
@@ -11,7 +11,9 @@ def piechart(request):
     return render(request, 'pages/piechart.html')
 
 def cohort(request):
-    return render(request, 'pages/cohort.html')
+    cohorts = Cohort.objects.all().order_by('cohort_date')
+    context = {'cohorts':cohorts}
+    return render(request, 'pages/cohort.html', context)
 
 def barchart(request):
     return render(request, 'pages/barchart.html')
@@ -39,4 +41,3 @@ def get_top3_products(request):
         "counts": counts
     }
     return JsonResponse(data)
-	
