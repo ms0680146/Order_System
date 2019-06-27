@@ -5,7 +5,7 @@ from django.db.models import Count, Sum
 # Create your views here.
 
 def home(request):
-    return render(request, 'layout.html')
+    return render(request, 'pages/home.html')
 
 def piechart(request):
     return render(request, 'pages/piechart.html')
