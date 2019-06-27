@@ -12,3 +12,8 @@ class OrderItem(models.Model):
     order_id = models.BigIntegerField()
     product_name = models.CharField(max_length=100)
     qty = models.PositiveIntegerField()
+
+class Cohort(models.Model):
+    customer_id = models.BigIntegerField()
+    cohort_date = models.DateField()
+    cohort_index = models.PositiveSmallIntegerField()
