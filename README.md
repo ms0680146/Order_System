@@ -20,6 +20,10 @@
 ## Results
 成果網站連結:<br><br>
 首頁: https://order-system-kai.herokuapp.com/home/ <br><br>
+![](https://imgur.com/NACehVo.png)
 免運比例圓餅圖: https://order-system-kai.herokuapp.com/piechart/ <br><br>
+![](https://imgur.com/qnmIWmko.png)
 同類群組分析表: https://order-system-kai.herokuapp.com/cohort/ <br><br>
+![](https://imgur.com/IbfmrSi.png)
 最受用戶歡迎的商品前三名: https://order-system-kai.herokuapp.com/barchart/ <br><br>
+![](https://imgur.com/pAplB7M.png)
